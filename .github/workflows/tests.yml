@@ -10,13 +10,20 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: pip
-      - run: sudo apt-get update && sudo apt-get install -y ffmpeg libgl1 libegl1
+      - name: Ensure video runtime dependencies
+        run: |
+          if command -v ffmpeg && command -v ffprobe && python -c 'import ctypes; ctypes.CDLL("libGL.so.1"); ctypes.CDLL("libEGL.so.1")'; then
+            exit 0
+          fi
+          sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 update
+          sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 install -y ffmpeg libgl1 libegl1
       - run: python -m pip install -e '.[models,ollama,datasets,test]'
       - run: ruff check .
       - run: python -m pytest -q
