@@ -40,6 +40,10 @@ def description(attrs: dict[str, Any]) -> str:
         for key in ("llm_description", "llm_description2", "which_llm_description")
         if key in attrs
     }
+    # The official archive uses the literal string "None" for absent alternatives.
+    for key, value in attrs.items():
+        if isinstance(value, str) and value.strip().lower() in {"none", "null", ""}:
+            attrs[key] = None
     direction = attrs.get("which_llm_description")
     if direction is None:
         if attrs.get("llm_description2"):

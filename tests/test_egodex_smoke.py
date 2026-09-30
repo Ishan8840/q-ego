@@ -6,6 +6,9 @@ from scripts.egodex_smoke import description, select_members
 def test_egodex_reversible_description_direction():
     assert description({"llm_description": b"open lid"}) == "open lid"
     assert (
+        description({"llm_description": "fold shirt", "llm_description2": "None"}) == "fold shirt"
+    )
+    assert (
         description(
             {
                 "llm_description": "open lid",
