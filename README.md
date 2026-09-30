@@ -4,6 +4,8 @@ A local, explainable quality-control MVP for egocentric manipulation videos. It 
 
 **Real adapters are available:** MediaPipe CPU hand tracking, OpenAI structured semantic QC, and local Qwen vision via Ollama. Enable them explicitly with `--detector mediapipe --provider openai`. Without configured models, missing evidence still goes to `REVIEW`. No payment is executed. See [models and visual reports](docs/models-and-reports.md) and [human calibration](docs/calibration.md).
 
+For reproducible real-video smoke tests, see [public-data testing](docs/public-data-testing.md).
+
 ## Architecture and dependencies
 
 ```text
