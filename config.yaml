@@ -1,0 +1,65 @@
+# Default thresholds are unchanged; adapters are enabled via CLI flags.
+hands:
+  model_path: models/hand_landmarker.task
+  num_hands: 2
+  detection_threshold: 0.5
+  presence_threshold: 0.5
+  tracking_threshold: 0.5
+  box_padding: 0.05
+  swap_handedness: false
+  max_track_gap_seconds: 1
+  max_track_distance: 0.25
+vlm:
+  model: gpt-4.1-mini-2025-04-14
+  temperature: 0
+  timeout_seconds: 60
+  max_retries: 2
+  max_output_tokens: 1500
+  image_detail: high
+visibility_sample_fps: 5
+report_max_frames: 60
+technical:
+  decode_timeout_seconds: 300
+  timestamp_gap_factor: 1.8
+  max_dropped_frame_ratio: 0.05
+  phase_response_min: 0.1
+  sample_fps: 2
+  min_width: 640
+  min_height: 480
+  min_fps: 15
+  min_duration: 2
+  max_duration: 600
+  blur_laplacian: 60
+  dark_pixel: 15
+  bright_pixel: 240
+  max_clipped_ratio: 0.65
+  duplicate_difference: 0.1
+  low_motion_difference: 1
+  max_frozen_ratio: 0.2
+  max_low_motion_seconds: 10
+  min_quality_ratio: 0.5
+  max_shake_fraction: 0.08
+weights:
+  task: 30
+  hand_interaction: 25
+  object: 20
+  technical: 15
+  framing: 10
+pass_threshold: 85
+review_threshold: 65
+disagreement_threshold: 0.35
+no_manipulation_threshold: 0.05
+incomplete_threshold: 0.25
+critical_visibility_threshold: 0.15
+irrelevant_threshold: 0.95
+audit_percent: 5
+audit_seed: ego-q-v1
+borderline_margin: 2
+boundary_margin: 0.05
+offscreen_min_seconds: 2
+semantic_frames: 12
+bonus_threshold: 90
+full_pay_threshold: 75
+reduced_pay_threshold: 60
+bonus_multiplier: 1
+reduced_multiplier: 0.5

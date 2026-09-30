@@ -1,0 +1,3 @@
+video,collector_id,task_name,expected_task_description,expected_object,min_duration,max_duration
+clip-001.mp4,c17,put cup in drawer,"Open drawer, insert cup, close drawer",cup,3,90
+clip-002.mp4,c18,fold towel,Fold the towel completely,towel,,
